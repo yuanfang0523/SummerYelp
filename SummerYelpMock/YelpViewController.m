@@ -11,6 +11,7 @@
 #import "YelpNetworking.h"
 #import "YelpTableViewCell.h"
 #import "YelpDataStore.h"
+#import "DetailYelpViewController.h"
 
 @import CoreLocation;
 
@@ -66,6 +67,16 @@
 {
     return 100;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DetailYelpViewController *detailVC = [[DetailYelpViewController alloc] initWithDataModel:self.dataModels[indexPath.row]];
+    [self.navigationController pushViewController:detailVC animated:YES];
+    // add next line: select restaurant -> go to detail -> go back -> the selected restaurant won't keep
+    // selected
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 
 #pragma mark - UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -162,7 +173,8 @@
     // if want to try more function comment next line  下一行为了省电 （实时 or 不实时)
     [manager stopUpdatingLocation];
     NSLog(@"current location %lf %lf", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
-    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:currentLocation term:@"restaurant" completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
+      [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:currentLocation term:self.searchBar.text completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
+    //[[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:currentLocation term:@"restaurant" completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
         self.dataModels = dataModelArray;
         
         dispatch_async(dispatch_get_main_queue(), ^{

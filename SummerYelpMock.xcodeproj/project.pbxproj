@@ -17,6 +17,11 @@
 		B23BCBAA1F521B4D00190F3C /* SummerYelpMockUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B23BCBA91F521B4D00190F3C /* SummerYelpMockUITests.m */; };
 		B23BCBBA1F521BC400190F3C /* YelpNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B23BCBB91F521BC400190F3C /* YelpNetworking.m */; };
 		B23BCBBE1F522FE200190F3C /* YelpDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B23BCBBD1F522FE200190F3C /* YelpDataModel.m */; };
+		B2511F191F5F8F3200F6FD2B /* DetailYelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2511F181F5F8F3200F6FD2B /* DetailYelpViewController.m */; };
+		B2511F1D1F5F8F7700F6FD2B /* DetailViewHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2511F1B1F5F8F7700F6FD2B /* DetailViewHeaderTableViewCell.m */; };
+		B2511F1E1F5F8F7700F6FD2B /* DetailViewHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2511F1C1F5F8F7700F6FD2B /* DetailViewHeaderTableViewCell.xib */; };
+		B2511F221F5FA10E00F6FD2B /* MapTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2511F201F5FA10E00F6FD2B /* MapTableViewCell.m */; };
+		B2511F231F5FA10E00F6FD2B /* MapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2511F211F5FA10E00F6FD2B /* MapTableViewCell.xib */; };
 		B297544B1F5B57D00057B6A0 /* YelpDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B297544A1F5B57D00057B6A0 /* YelpDataStore.m */; };
 		B297544F1F5B5A5A0057B6A0 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B297544E1F5B5A5A0057B6A0 /* MapViewController.m */; };
 		B29754521F5B5F8D0057B6A0 /* YelpAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B29754511F5B5F8D0057B6A0 /* YelpAnnotation.m */; };
@@ -63,6 +68,14 @@
 		B23BCBB91F521BC400190F3C /* YelpNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YelpNetworking.m; path = Networking/YelpNetworking.m; sourceTree = "<group>"; };
 		B23BCBBC1F522FE200190F3C /* YelpDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YelpDataModel.h; path = DataModel/YelpDataModel.h; sourceTree = "<group>"; };
 		B23BCBBD1F522FE200190F3C /* YelpDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YelpDataModel.m; path = DataModel/YelpDataModel.m; sourceTree = "<group>"; };
+		B2511F171F5F8F3200F6FD2B /* DetailYelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailYelpViewController.h; sourceTree = "<group>"; };
+		B2511F181F5F8F3200F6FD2B /* DetailYelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailYelpViewController.m; sourceTree = "<group>"; };
+		B2511F1A1F5F8F7700F6FD2B /* DetailViewHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewHeaderTableViewCell.h; sourceTree = "<group>"; };
+		B2511F1B1F5F8F7700F6FD2B /* DetailViewHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewHeaderTableViewCell.m; sourceTree = "<group>"; };
+		B2511F1C1F5F8F7700F6FD2B /* DetailViewHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		B2511F1F1F5FA10E00F6FD2B /* MapTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapTableViewCell.h; sourceTree = "<group>"; };
+		B2511F201F5FA10E00F6FD2B /* MapTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapTableViewCell.m; sourceTree = "<group>"; };
+		B2511F211F5FA10E00F6FD2B /* MapTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapTableViewCell.xib; sourceTree = "<group>"; };
 		B29754491F5B57D00057B6A0 /* YelpDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpDataStore.h; sourceTree = "<group>"; };
 		B297544A1F5B57D00057B6A0 /* YelpDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpDataStore.m; sourceTree = "<group>"; };
 		B297544D1F5B5A5A0057B6A0 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -211,6 +224,8 @@
 				B297544E1F5B5A5A0057B6A0 /* MapViewController.m */,
 				B23BCB8A1F521B4D00190F3C /* YelpViewController.h */,
 				B23BCB8B1F521B4D00190F3C /* YelpViewController.m */,
+				B2511F171F5F8F3200F6FD2B /* DetailYelpViewController.h */,
+				B2511F181F5F8F3200F6FD2B /* DetailYelpViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -221,6 +236,12 @@
 				B29984881F5663460043B3DB /* YelpTableViewCell.h */,
 				B29984891F5663460043B3DB /* YelpTableViewCell.m */,
 				B299848A1F5663460043B3DB /* YelpTableViewCell.xib */,
+				B2511F1A1F5F8F7700F6FD2B /* DetailViewHeaderTableViewCell.h */,
+				B2511F1B1F5F8F7700F6FD2B /* DetailViewHeaderTableViewCell.m */,
+				B2511F1C1F5F8F7700F6FD2B /* DetailViewHeaderTableViewCell.xib */,
+				B2511F1F1F5FA10E00F6FD2B /* MapTableViewCell.h */,
+				B2511F201F5FA10E00F6FD2B /* MapTableViewCell.m */,
+				B2511F211F5FA10E00F6FD2B /* MapTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -346,8 +367,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2511F1E1F5F8F7700F6FD2B /* DetailViewHeaderTableViewCell.xib in Resources */,
 				B23BCB941F521B4D00190F3C /* LaunchScreen.storyboard in Resources */,
 				B299848C1F5663460043B3DB /* YelpTableViewCell.xib in Resources */,
+				B2511F231F5FA10E00F6FD2B /* MapTableViewCell.xib in Resources */,
 				B23BCB911F521B4D00190F3C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,10 +447,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2511F1D1F5F8F7700F6FD2B /* DetailViewHeaderTableViewCell.m in Sources */,
 				B23BCB8C1F521B4D00190F3C /* YelpViewController.m in Sources */,
 				B23BCBBA1F521BC400190F3C /* YelpNetworking.m in Sources */,
 				B297544B1F5B57D00057B6A0 /* YelpDataStore.m in Sources */,
+				B2511F191F5F8F3200F6FD2B /* DetailYelpViewController.m in Sources */,
 				B297544F1F5B5A5A0057B6A0 /* MapViewController.m in Sources */,
+				B2511F221F5FA10E00F6FD2B /* MapTableViewCell.m in Sources */,
 				B23BCB891F521B4D00190F3C /* AppDelegate.m in Sources */,
 				B299848B1F5663460043B3DB /* YelpTableViewCell.m in Sources */,
 				B23BCBBE1F522FE200190F3C /* YelpDataModel.m in Sources */,
