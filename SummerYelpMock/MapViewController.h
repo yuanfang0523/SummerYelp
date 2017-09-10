@@ -9,6 +9,6 @@
 #import "YelpViewController.h"
 
 
-@interface MapViewController : YelpViewController
+@interface MapViewController : UIViewController
 
 @end

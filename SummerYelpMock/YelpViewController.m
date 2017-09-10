@@ -58,8 +58,7 @@
     self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
-
-
+    
 }
 
 #pragma mark - UITableViewDelegate
@@ -126,7 +125,7 @@
     
     if (!loc) {
         //mock loc
-        CLLocation *loc = [[CLLocation alloc] initWithLatitude:37.3263625 longitude:-122.027210];
+        loc = [[CLLocation alloc] initWithLatitude:37.3263625 longitude:-122.027210];
     }
 
     
@@ -183,5 +182,6 @@
     }];
     
 }
+
 
 @end

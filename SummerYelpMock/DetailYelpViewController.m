@@ -26,6 +26,7 @@ UITableViewDataSource>
 
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic) YelpDataModel *dataModel;
+@property (nonatomic) UIImage *imageForShare;
 
 
 
@@ -52,10 +53,32 @@ UITableViewDataSource>
     
     [self.tableView registerNib:[UINib nibWithNibName:@"DetailViewHeaderTableViewCell" bundle:nil]forCellReuseIdentifier:@"DetailViewHeaderTableViewCell"];
     
+    [self.view addSubview:self.tableView];
+    // share
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"share"] style:UIBarButtonItemStylePlain target:self action:@selector(didTapShareButton)];
     
-    [self.view addSubview:self.tableView];
+    // download Image and transfer to UIimage
+    NSURLSessionDataTask *downloadTask = [[NSURLSession sharedSession]
+                                          dataTaskWithURL:[NSURL URLWithString:self.dataModel.imageUrl] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                              
+                                              self.imageForShare = [UIImage imageWithData:data];
+                                          }];
+    
+    [downloadTask resume];
 
+}
+
+
+// share
+- (void)didTapShareButton
+{
+    UIActivityViewController *activityViewController =
+    [[UIActivityViewController alloc] initWithActivityItems:@[self.dataModel.name, self.dataModel.displayAddress, self.imageForShare] applicationActivities:nil];
+    
+    [self presentViewController:activityViewController
+                       animated:YES
+                     completion:nil];
 }
 
 #pragma mark - UITableViewDelegate
@@ -137,6 +160,8 @@ UITableViewDataSource>
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation

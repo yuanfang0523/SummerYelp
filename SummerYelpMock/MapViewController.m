@@ -11,6 +11,7 @@
 @import MapKit;
 #import "YelpAnnotation.h"
 #import <UIImageView+AFNetworking.h>
+#import "DetailYelpViewController.h"
 
 @interface MapViewController () <MKMapViewDelegate>
 @property (nonatomic) MKMapView *mapView;
@@ -42,6 +43,8 @@
     [self.mapView setShowsUserLocation:YES];
     [self.mapView setCenterCoordinate:location animated:YES];
     self.mapView.delegate = self;
+    self.navigationItem.title = @"Map";
+    //0x7fc11ee0e130
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +72,7 @@
     if ([[YelpDataStore sharedInstance] userLocation]) {
         [self.mapView setCenterCoordinate:[[YelpDataStore sharedInstance] userLocation].coordinate animated:YES];
     }
+    //self.navigationItem.title = @"Map";
 }
     
 - (void)updateAnnotation
@@ -77,6 +81,17 @@
     NSArray <YelpAnnotation *> *annotations = [YelpAnnotation buildAnnotationArrayFromDataArray:[[YelpDataStore sharedInstance] dataModels]];
     [self.mapView addAnnotations:annotations];
 }
+
+#pragma mark - MKMapViewDelegate
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    YelpAnnotation *annotation = view.annotation;
+    DetailYelpViewController *detailVC = [[DetailYelpViewController alloc] initWithDataModel:annotation.dataModel];
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+
 
 #pragma mark - Map methods
 
@@ -92,6 +107,8 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     [imageView setImageWithURL:[NSURL URLWithString:annotation.dataModel.imageUrl]];
     view.leftCalloutAccessoryView = imageView;
+    view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    view.canShowCallout = YES;
 }
 
 

@@ -9,46 +9,62 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SummerYelpMock/YelpTableViewCell.m"
-            timestampString = "526367655.560985"
+            filePath = "SummerYelpMock/YelpViewController.m"
+            timestampString = "526691633.54858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "category"
-            landmarkType = "24">
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-searchBarSearchButtonClicked:"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[YelpTableViewCell category]"
+                  symbolName = "__51-[YelpViewController searchBarSearchButtonClicked:]_block_invoke"
                   moduleName = "SummerYelpMock"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alison/project/lai/iOS/SummerYelpMock/SummerYelpMock/SummerYelpMock/YelpTableViewCell.m"
-                  timestampString = "526367655.82536"
+                  urlString = "file:///Users/alison/project/lai/iOS/SummerYelpMock/SummerYelpMock/SummerYelpMock/YelpViewController.m"
+                  timestampString = "526691924.306164"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "16">
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "97">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[YelpTableViewCell setCategory:]"
+                  symbolName = "__51-[YelpViewController searchBarSearchButtonClicked:]_block_invoke_2"
                   moduleName = "SummerYelpMock"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alison/project/lai/iOS/SummerYelpMock/SummerYelpMock/SummerYelpMock/YelpTableViewCell.m"
-                  timestampString = "526367655.831239"
+                  urlString = "file:///Users/alison/project/lai/iOS/SummerYelpMock/SummerYelpMock/SummerYelpMock/YelpViewController.m"
+                  timestampString = "526691924.308573"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "49">
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SummerYelpMock/YelpViewController.m"
+            timestampString = "526691704.499016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-searchBarSearchButtonClicked:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
