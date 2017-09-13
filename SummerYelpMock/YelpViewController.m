@@ -12,6 +12,7 @@
 #import "YelpTableViewCell.h"
 #import "YelpDataStore.h"
 #import "DetailYelpViewController.h"
+#import "FilterViewController.h"
 
 @import CoreLocation;
 
@@ -61,6 +62,12 @@
     
 }
 
+- (void) didTapSettings {
+    FilterViewController *filterVC = [[FilterViewController alloc] init];
+    [self.navigationController pushViewController:filterVC animated:YES];
+
+}
+
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -100,10 +107,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void) didTapSettings {
-    
 }
 
 
