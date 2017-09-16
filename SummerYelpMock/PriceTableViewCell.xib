@@ -27,6 +27,9 @@
                             <segment title=""/>
                             <segment title=""/>
                         </segments>
+                        <connections>
+                            <action selector="didSelectSegment:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Iy2-zD-k4B"/>
+                        </connections>
                     </segmentedControl>
                 </subviews>
                 <constraints>
@@ -36,6 +39,9 @@
                     <constraint firstItem="vqQ-MA-CNM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="SOx-gd-DgW"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="priceSegment" destination="vqQ-MA-CNM" id="UG7-Ec-i3O"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

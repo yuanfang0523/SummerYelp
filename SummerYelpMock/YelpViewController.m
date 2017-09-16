@@ -18,10 +18,16 @@
 
 //只在yelpViewController 里 有 locationManager, 在 MapViewController 里没有, 如果想在MapViewController里也有，最好重新写一个LocationManager, 然后在每一个想有implement locationManager 的file里都加上
 @interface YelpViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, CLLocationManagerDelegate>
+
 @property (nonatomic) UITableView *tableView;
 @property (nonatomic, copy) NSArray <YelpDataModel *> *dataModels;
+
 @property (nonatomic) UISearchBar *searchBar;
 @property (nonatomic, strong) CLLocationManager *locationManager;
+
+@property (nonatomic) UIRefreshControl *refreshControl;
+@property (nonatomic) UIActivityIndicatorView *infiniteLoadingIndicator;
+
 @end
 
 
@@ -40,7 +46,8 @@
     CLLocation *loc
     = [[CLLocation alloc] initWithLatitude:37.3263625 longitude:-122.027210];
     
-    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:loc term:@"restaurant" completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
+    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:loc term:@"restaurant" parameters:[self _generateNetworkRelatedParaMeters]
+                                                     completionBlock:^(NSArray<YelpDataModel *> *dataModelArray){
         self.dataModels = dataModelArray;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
@@ -60,6 +67,13 @@
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
     
+    // refresh
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(didPullToRefresh) forControlEvents:UIControlEventValueChanged];
+    
+    self.infiniteLoadingIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.tableView.tableFooterView = self.infiniteLoadingIndicator;
 }
 
 - (void) didTapSettings {
@@ -90,6 +104,33 @@
     YelpTableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"YelpTableViewCell"];
     
     [cell updateBasedOnDataModel:self.dataModels[indexPath.row]];
+    if (indexPath.row == [self.dataModels count] - 4) {
+        NSMutableDictionary *parameter = [[self _generateNetworkRelatedParaMeters] mutableCopy];
+        [parameter setObject:[@([self.dataModels count]) stringValue] forKey:@"offset"];
+        [self.infiniteLoadingIndicator startAnimating];
+        
+        CLLocation *loc = [[YelpDataStore sharedInstance] userLocation];
+        if (!loc) {
+            //mock loc
+            loc = [[CLLocation alloc] initWithLatitude:37.3263625 longitude:-122.027210];
+        }
+        
+        [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:loc term:self.searchBar.text ?: @"restaurant" parameters:parameter completionBlock:^(NSArray<YelpDataModel *> *dataModelArray)  {
+            [self.infiniteLoadingIndicator stopAnimating];
+            if ([dataModelArray count]) {
+                NSMutableArray *mut = [self.dataModels mutableCopy];
+                [mut addObjectsFromArray:dataModelArray];
+                self.dataModels = [mut copy];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }
+            
+            
+        }];
+    }
+
+    
     return cell;
 }
 
@@ -134,7 +175,9 @@
     
     // the following code the key that we can finally make our table be able to search based on user’s input
     
-    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:loc term:searchBar.text completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
+    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:loc term:@"restaurant" parameters:[self _generateNetworkRelatedParaMeters]
+                                                     completionBlock:^(NSArray<YelpDataModel *> *dataModelArray)
+ {
         self.dataModels = dataModelArray;
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -175,7 +218,9 @@
     // if want to try more function comment next line  下一行为了省电 （实时 or 不实时)
     [manager stopUpdatingLocation];
     NSLog(@"current location %lf %lf", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
-      [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:currentLocation term:self.searchBar.text completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
+    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:currentLocation term:@"restaurant" parameters:[self _generateNetworkRelatedParaMeters]
+                                                     completionBlock:^(NSArray<YelpDataModel *> *dataModelArray)
+ {
     //[[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:currentLocation term:@"restaurant" completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
         self.dataModels = dataModelArray;
         
@@ -184,6 +229,49 @@
         });
     }];
     
+}
+
+// pull to refresh
+- (void)didPullToRefresh
+{
+    CLLocation *loc = [[YelpDataStore sharedInstance] userLocation];
+    
+    if (!loc) {
+        //mock loc
+        loc = [[CLLocation alloc] initWithLatitude:37.3263625 longitude:-122.027210];
+    }
+    [self.refreshControl beginRefreshing];
+    [[YelpNetworking sharedInstance] fetchRestaurantsBasedOnLocation:loc term:@"restaurant" parameters:[self _generateNetworkRelatedParaMeters]
+                                                     completionBlock:^(NSArray<YelpDataModel *> *dataModelArray) {
+        self.dataModels = dataModelArray;
+        [self.refreshControl endRefreshing];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
+}
+
+- (NSDictionary<NSString *, NSString *> *)_generateNetworkRelatedParaMeters
+{
+    NSMutableDictionary * dict = [NSMutableDictionary new];
+    NSString *categories = @"";
+    for (NSString *string in [[YelpDataStore sharedInstance] selectedCategories]) {
+        if (categories.length) {
+            [categories stringByAppendingString:@","];
+            [categories stringByAppendingString:string];
+        } else {
+            categories = string;
+        }
+    }
+    if ([categories length]) {
+        [dict setObject:categories forKey:@"categories"];
+    }
+    
+    if ([[YelpDataStore sharedInstance] priceParameter]) {
+        [dict setObject:[[YelpDataStore sharedInstance] priceParameter] forKey:@"price"];
+    }
+    return [dict copy];
 }
 
 

@@ -57,10 +57,15 @@ static NSString const * kTokenEndPoint = @"https://api.yelp.com/oauth2/token";
     [postDataTask resume];
 }
 
-- (void)fetchRestaurantsBasedOnLocation:(CLLocation *)location term:(NSString *)term completionBlock:(RestaurantCompletionBlock)completionBlock
+- (void)fetchRestaurantsBasedOnLocation:(CLLocation *)location term:(NSString *)term parameters:(NSDictionary *)parameters completionBlock:(RestaurantCompletionBlock)completionBlock
 {
     TokenPendingTask tokenTask = ^(NSString *token){
         NSString *string = [NSString stringWithFormat:@"https://api.yelp.com/v3/businesses/search?term=%@&latitude=%.6f&longitude=%.6f",term, location.coordinate.latitude, location.coordinate.longitude];
+        
+        for (NSString *key in parameters.allKeys) {
+            string = [string stringByAppendingString:[NSString stringWithFormat:@"&%@=%@",key,parameters[key]]];
+        }
+        
         NSURL *url = [NSURL URLWithString:string];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy

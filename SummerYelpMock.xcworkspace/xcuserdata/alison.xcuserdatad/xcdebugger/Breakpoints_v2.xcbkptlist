@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SummerYelpMock/YelpViewController.m"
-            timestampString = "526967223.80886"
+            timestampString = "527293319.311256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-searchBarSearchButtonClicked:"
             landmarkType = "7">
             <Locations>
@@ -26,11 +26,11 @@
                   moduleName = "SummerYelpMock"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alison/project/lai/iOS/SummerYelpMock/SummerYelpMock/SummerYelpMock/YelpViewController.m"
-                  timestampString = "526691924.306164"
+                  timestampString = "527296721.215359"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
+                  startingLineNumber = "183"
+                  endingLineNumber = "183"
                   offsetFromSymbolStart = "97">
                </Location>
                <Location
@@ -41,11 +41,11 @@
                   moduleName = "SummerYelpMock"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/alison/project/lai/iOS/SummerYelpMock/SummerYelpMock/SummerYelpMock/YelpViewController.m"
-                  timestampString = "526691924.308573"
+                  timestampString = "527296721.219549"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
+                  startingLineNumber = "183"
+                  endingLineNumber = "183"
                   offsetFromSymbolStart = "12">
                </Location>
             </Locations>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SummerYelpMock/YelpViewController.m"
-            timestampString = "526967223.80886"
+            timestampString = "527293319.311256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-searchBarSearchButtonClicked:"
             landmarkType = "7">
          </BreakpointContent>

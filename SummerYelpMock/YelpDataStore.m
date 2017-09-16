@@ -7,6 +7,7 @@
 //
 
 #import "YelpDataStore.h"
+
 @implementation YelpDataStore
 
 + (YelpDataStore *)sharedInstance {
@@ -17,4 +18,13 @@
     });
     return _sharedInstance;
 }
+
+- (instancetype)init
+{
+    if (self = [super init]){
+        self.selectedCategories = [NSMutableSet new];
+    }
+    return self;
+}
+
 @end

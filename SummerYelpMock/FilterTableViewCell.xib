@@ -27,6 +27,9 @@
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqQ-kK-2jI">
                         <rect key="frame" x="263" y="8" width="51" height="27.5"/>
+                        <connections>
+                            <action selector="didUpdateCategory:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Mze-gR-WMW"/>
+                        </connections>
                     </switch>
                 </subviews>
                 <constraints>
@@ -41,8 +44,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="categoryTitle" destination="feU-Lb-SaC" id="SKt-ma-z0b"/>
-                <outlet property="filter" destination="dqQ-kK-2jI" id="ICW-j9-jZA"/>
+                <outlet property="categoryTitle" destination="feU-Lb-SaC" id="Hau-x9-rF5"/>
+                <outlet property="filter" destination="dqQ-kK-2jI" id="3no-Mr-mts"/>
             </connections>
         </tableViewCell>
     </objects>

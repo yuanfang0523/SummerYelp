@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, FilterViewSection) {
 
 
 @implementation FilterViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupCatogries];
